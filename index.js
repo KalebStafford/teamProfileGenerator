@@ -75,3 +75,42 @@ let addTeam = () => {
           });
       });
   };
+
+  function startHtml(associates) {
+    let html = `
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="../dist/style.css">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+      <title>Team Profile</title>
+    </head>
+    <body>
+      <nav class="navbar">
+        <div class="h1">My Team</div>
+      </nav>
+    <div class="container">
+      <div class="row">
+        ${associates}
+      </div>
+    </body>
+  </html>
+  `;
+  
+  fs.writeFile("./src/profile.html", html, function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
+  return html;
+}
+
+function initApp() {
+  startHtml();
+  addTeam();
+}
+
+initApp();
